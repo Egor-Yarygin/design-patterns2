@@ -1,12 +1,13 @@
 import json
 import os
-from settings import settings
+from src.models.settings import settings
+from src.abstract_logic import abstract_logic
 
 """
 Менеджер настроек
 """
-class settings_manager:
-    __file_name = "C:/Users/Costo/OneDrive/Документы/GitHub/design-patterns2/project/data/settings.json"
+class settings_manager(abstract_logic):
+    __file_name = "C:/Users/Costo/OneDrive/Документы/GitHub/design-patterns/project/data/settings.json"
     __settings: settings = None
 
     def __new__(cls):
@@ -44,6 +45,7 @@ class settings_manager:
         except Exception as e:
             print(f"Ошибка загрузки файла настроек: {e}")
             self.__settings = self.__default_setting()
+            self.set_exception(e)
             return False
 
     """
@@ -64,7 +66,7 @@ class settings_manager:
     Загруженные настройки
     """
     @property
-    def settings(self):
+    def current_settings(self)->settings:
         return self.__settings
 
     """
@@ -79,3 +81,6 @@ class settings_manager:
         data.bik = "(default)"
         data.ownership_type = "(def)"
         return data
+    
+    def set_exception(self, e: Exception):
+        self._inner_set_exception(e)
