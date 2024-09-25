@@ -1,7 +1,8 @@
 import json
 import os
-from src.models.settings import settings
+from src.settings import settings
 from src.abstract_logic import abstract_logic
+from src.core.custom_exceptions import validator
 
 """
 Менеджер настроек
@@ -23,8 +24,7 @@ class settings_manager(abstract_logic):
     Открыть и загрузить настройки
     """
     def open(self, file_name: str = ""):
-        if not isinstance(file_name, str):
-            raise TypeError("Некорректно переданы параметры!")
+        validator.validate(file_name, str)
 
         if file_name != "":
             self.__file_name = file_name

@@ -1,7 +1,8 @@
-from src.abstract_model import abstract_model
-from src.custom_exceptions import argument_exception
+from src.core.abstract_model import abstract_model
+from src.core.custom_exceptions import argument_exception
+from src.core.base_models import base_model_name
 
-class nomenclature_group_model(abstract_model):
+class nomenclature_group_model(base_model_name):
     def __init__(self, name: str):
         if not name or len(name.strip()) == 0:
             raise argument_exception("Наименование не может быть пустым!")
@@ -19,3 +20,22 @@ class nomenclature_group_model(abstract_model):
         if not isinstance(other_object, nomenclature_group_model):
             return False
         return self.__name == other_object.name
+    
+        """
+    Default группа - сырье (фабричный метод)
+    """
+    @staticmethod
+    def default_group_source():
+        item = nomenclature_group_model()
+        item.name = "Сырье"
+        return item
+    
+    """
+    Default группа - замарозка (фабричный метод)
+    """
+    @staticmethod
+    def default_group_cold():
+        item = nomenclature_group_model()
+        item.name = "Заморозка"
+        return item
+    

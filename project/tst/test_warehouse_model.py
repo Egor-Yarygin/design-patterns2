@@ -1,6 +1,6 @@
 import unittest
 from src.models.warehouse_model import warehouse_model
-from src.custom_exceptions import argument_exception
+from src.core.custom_exceptions import argument_exception
 
 class TestWarehouseModel(unittest.TestCase):
 

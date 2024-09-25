@@ -1,6 +1,6 @@
-from src.abstract_model import abstract_model
-from src.custom_exceptions import argument_exception
-from src.models.settings import settings
+from src.core.abstract_model import abstract_model
+from src.core.custom_exceptions import argument_exception
+from src.settings import settings
 
 class organization_model(abstract_model):
     def __init__(self, settings: settings):

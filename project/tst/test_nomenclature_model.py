@@ -2,7 +2,7 @@ import unittest
 from src.models.nomenclature_model import nomenclature_model
 from src.models.nomenclature_group_model import nomenclature_group_model
 from src.models.range_model import range_model
-from src.custom_exceptions import argument_exception
+from src.core.custom_exceptions import argument_exception
 
 class TestNomenclatureModel(unittest.TestCase):
 
@@ -40,3 +40,15 @@ class TestNomenclatureModel(unittest.TestCase):
         with self.assertRaises(argument_exception):
             # Некорректная единица измерения
             nomenclature_model("Товар 1", "Товар полное наименование", group, None)
+
+    
+    def test_nomenclature_data_existence(self):
+        group = nomenclature_group_model("Продукты")
+        range_unit = range_model("кг", 1000)
+        nomenclature = nomenclature_model("Сахар", "Белый сахар", range_unit, group)
+        
+        self.assertIsNotNone(nomenclature.name)
+        self.assertIsNotNone(nomenclature.full_name)
+        self.assertIsNotNone(nomenclature.range_unit)
+        self.assertIsNotNone(nomenclature.nomenclature_group)
+

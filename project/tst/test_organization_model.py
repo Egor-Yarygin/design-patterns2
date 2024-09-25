@@ -2,7 +2,7 @@ import unittest
 import unittest.mock
 from src.settings_manager import settings_manager
 from src.models.organization_model import organization_model
-from src.custom_exceptions import argument_exception
+from src.core.custom_exceptions import argument_exception
 
 class TestOrganizationModel(unittest.TestCase):
 
