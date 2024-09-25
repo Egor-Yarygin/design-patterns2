@@ -1,5 +1,5 @@
-from src.abstract_model import abstract_model
-from src.custom_exceptions import argument_exception
+from src.core.abstract_model import abstract_model
+from src.core.custom_exceptions import argument_exception
 
 class range_model(abstract_model):
     def __init__(self, name: str, conversion_factor: int, base_range=None):

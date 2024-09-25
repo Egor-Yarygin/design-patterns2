@@ -1,6 +1,6 @@
 import unittest
 from src.models.nomenclature_group_model import nomenclature_group_model
-from src.custom_exceptions import argument_exception
+from src.core.custom_exceptions import argument_exception
 
 class TestNomenclatureGroupModel(unittest.TestCase):
 
@@ -18,3 +18,8 @@ class TestNomenclatureGroupModel(unittest.TestCase):
         with self.assertRaises(argument_exception):
             # Наименование группы не может быть пустым
             nomenclature_group_model("")
+    
+    def test_group_data_existence(self):
+        group = nomenclature_group_model("Товары")
+        self.assertIsNotNone(group.name)
+

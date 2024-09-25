@@ -1,5 +1,5 @@
-from src.abstract_model import abstract_model
-from src.custom_exceptions import argument_exception
+from src.core.abstract_model import abstract_model
+from src.core.custom_exceptions import argument_exception
 from src.models.range_model import range_model
 from src.models.nomenclature_group_model import nomenclature_group_model
 
